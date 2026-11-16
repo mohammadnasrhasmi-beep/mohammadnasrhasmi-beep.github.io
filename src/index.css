@@ -1,0 +1,144 @@
+:root {
+  --bg: #0b1020;
+  --bg-2: #121a33;
+  --card: #151f3d;
+  --text: #cbd5f5;
+  --muted: #8b97bd;
+  --title: #eef2ff;
+  --accent: #7dd3fc;
+  --accent-2: #a78bfa;
+  --radius: 14px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; line-height: 1.65; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px clamp(20px, 6vw, 80px);
+  background: rgba(11, 16, 32, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(125, 211, 252, 0.08);
+}
+.logo { font-family: ui-monospace, monospace; font-weight: 700; font-size: 1.3rem; color: var(--title); }
+.logo span { color: var(--accent); }
+.nav nav { display: flex; gap: clamp(12px, 3vw, 32px); font-size: 0.95rem; }
+.nav nav a { color: var(--muted); transition: color 0.2s; }
+.nav nav a:hover { color: var(--accent); }
+
+/* ---------- Mise en page ---------- */
+main { max-width: 1000px; margin: 0 auto; padding: 0 clamp(20px, 6vw, 40px); }
+.section { padding: 90px 0 30px; }
+h2 { color: var(--title); font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 32px; display: flex; align-items: center; gap: 12px; }
+h2::after { content: ""; flex: 1; height: 1px; background: rgba(139, 151, 189, 0.25); max-width: 300px; }
+.num { font-family: ui-monospace, monospace; color: var(--accent); font-size: 1.1rem; }
+
+/* ---------- Accueil ---------- */
+.hero { min-height: calc(100vh - 70px); display: flex; flex-direction: column; justify-content: center; }
+.kicker { font-family: ui-monospace, monospace; color: var(--accent); margin: 0; }
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  line-height: 1.05;
+  margin: 10px 0;
+  background: linear-gradient(90deg, var(--title), var(--accent) 60%, var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tagline { font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--muted); margin: 0 0 20px; }
+.role { color: var(--title); border-bottom: 2px solid var(--accent); animation: fade 0.5s ease; display: inline-block; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.lead { max-width: 560px; font-size: 1.05rem; }
+.cta { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn:hover { transform: translateY(-2px); background: rgba(125, 211, 252, 0.1); }
+.btn.primary { background: var(--accent); color: var(--bg); }
+.btn.primary:hover { background: #a5e4ff; }
+
+/* ---------- À propos ---------- */
+.about { max-width: 680px; }
+.about strong { color: var(--title); }
+
+/* ---------- Compétences ---------- */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+.skill-card { background: var(--card); border-radius: var(--radius); padding: 22px; border: 1px solid rgba(125, 211, 252, 0.08); }
+.skill-card h3 { color: var(--title); margin: 0 0 12px; font-size: 1.05rem; }
+.skill-card ul { list-style: none; margin: 0; padding: 0; }
+.skill-card li { padding: 3px 0; color: var(--muted); }
+.skill-card li::before { content: "▹ "; color: var(--accent); }
+
+/* ---------- Projets ---------- */
+.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.chip {
+  background: transparent;
+  border: 1px solid rgba(139, 151, 189, 0.35);
+  color: var(--muted);
+  padding: 7px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  transition: all 0.2s;
+}
+.chip:hover { color: var(--accent); border-color: var(--accent); }
+.chip.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.project {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(125, 211, 252, 0.08);
+  transition: transform 0.25s, border-color 0.25s;
+}
+.project:hover { transform: translateY(-6px); border-color: rgba(125, 211, 252, 0.4); }
+.project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.folder { font-family: ui-monospace, monospace; color: var(--accent); font-size: 1.3rem; }
+.badge { font-size: 0.75rem; color: var(--accent-2); border: 1px solid var(--accent-2); border-radius: 999px; padding: 2px 10px; }
+.project h3 { color: var(--title); margin: 0 0 8px; }
+.project p { flex: 1; margin: 0 0 16px; font-size: 0.95rem; }
+.tags { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 8px; font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); }
+.links { display: flex; gap: 16px; font-weight: 600; }
+.links a { color: var(--accent); }
+.links a:hover { text-decoration: underline; }
+
+/* ---------- Contact ---------- */
+.contact { text-align: center; padding-bottom: 80px; }
+.contact h2 { justify-content: center; }
+.contact h2::after { display: none; }
+.contact p { max-width: 520px; margin: 0 auto 28px; }
+
+footer { text-align: center; padding: 24px; color: var(--muted); font-size: 0.85rem; font-family: ui-monospace, monospace; }
+
+@media (max-width: 600px) {
+  .nav nav a:nth-child(2) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.socials { display: flex; justify-content: center; gap: 24px; margin-top: 28px; font-family: ui-monospace, monospace; }
+.socials a { color: var(--muted); transition: color 0.2s; }
+.socials a:hover { color: var(--accent); }
